@@ -2,6 +2,7 @@ package com.udacity.sandwichclub;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,6 +11,8 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.repositories.SandwichRepositoryImpl;
+
+import static com.udacity.sandwichclub.utils.SandwichUtils.*;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -44,6 +47,7 @@ public class DetailActivity extends AppCompatActivity {
         populateUI(sandwich);
         Picasso.with(this)
                 .load(sandwich.getImage())
+                .error(ContextCompat.getDrawable(this, R.color.colorGray))
                 .into(ingredientsIv);
 
         setTitle(sandwich.getMainName());
@@ -55,9 +59,10 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI(Sandwich sandwich) {
+        String bulletString = getString(R.string.copy_bullet);
         ((TextView) findViewById(R.id.origin_tv)).setText(sandwich.getPlaceOfOrigin());
         ((TextView) findViewById(R.id.description_tv)).setText(sandwich.getDescription());
-        ((TextView) findViewById(R.id.ingredients_tv)).setText("");//sandwich.getIngredients());
-        ((TextView) findViewById(R.id.also_known_tv)).setText("");//sandwich.getAlsoKnownAs());
+        ((TextView) findViewById(R.id.ingredients_tv)).setText(getIngredientListAsString(sandwich, bulletString));
+        ((TextView) findViewById(R.id.also_known_tv)).setText(getAlsoKnowListAsString(sandwich, bulletString));
     }
 }

@@ -14,6 +14,7 @@ import java.util.concurrent.Callable;
 
 import static com.udacity.sandwichclub.utils.AnyUtils.tryOrDefault;
 import static com.udacity.sandwichclub.utils.AnyUtils.tryOrPrintException;
+import static com.udacity.sandwichclub.utils.StringUtils.orDefault;
 
 public class JsonUtils {
 
@@ -36,8 +37,8 @@ public class JsonUtils {
             sandwich = null;
         } else {
             List<String> alsoKnowAs = mapJSONArray(getJSONArrayDefault(mainNameObject, ALSO_KNOW_AS_KEY));
-            String placeOfOrigin = getStringOrDefault(object, PLACE_OF_ORIGIN_KEY, defaultValue);
-            String description = getStringOrDefault(object, DESCRIPTION_KEY, defaultValue);
+            String placeOfOrigin = orDefault(getStringOrDefault(object, PLACE_OF_ORIGIN_KEY, defaultValue), defaultValue) ;
+            String description = orDefault(getStringOrDefault(object, DESCRIPTION_KEY, defaultValue), defaultValue);
             String image = getStringOrDefault(object, IMAGE_KEY, "");
             List<String> ingredients = mapJSONArray(getJSONArrayDefault(object, INGREDIENTS_KEY));
             sandwich = new Sandwich(mainName, alsoKnowAs, placeOfOrigin, description, image, ingredients);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,31 +9,40 @@
 
     <ImageView
         android:id="@+id/image_iv"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/sandwich_picture_content_description"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="2.5:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_iv">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
+            android:paddingBottom="@dimen/items_vertical_margin"
             android:layout_height="wrap_content">
 
             <TextView
-                android:layout_marginTop="@dimen/items_vertical_margin"
                 android:id="@+id/origin_tv_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/activity_horizontal_margin"
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/items_vertical_margin"
+                android:text="@string/detail_place_of_origin_label"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:text="@string/detail_place_of_origin_label" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/also_known_tv_label"
@@ -73,15 +82,16 @@
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginEnd="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
-                tools:text="Wakanda"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/origin_tv_label"
-                app:layout_constraintTop_toTopOf="@id/origin_tv_label" />
+                app:layout_constraintTop_toTopOf="@id/origin_tv_label"
+                tools:text="Wakanda" />
 
             <TextView
                 android:id="@+id/description_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/items_vertical_margin"
                 app:layout_constraintEnd_toEndOf="@id/origin_tv"
                 app:layout_constraintStart_toStartOf="@id/origin_tv"
                 app:layout_constraintTop_toTopOf="@id/description_tv_label"
@@ -112,4 +122,4 @@
     </ScrollView>
 
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

@@ -7,6 +7,7 @@
     <string name="detail_description_label">Description:</string>
     <string name="detail_ingredients_label">Ingredients:</string>
     <string name="copy_unknown">Unknown</string>
+    <string name="copy_bullet">\u2022</string>
 
     <!-- Content descriptions-->
     <string name="sandwich_picture_content_description">Sandwich picture</string>
